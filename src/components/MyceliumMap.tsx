@@ -17,56 +17,47 @@ const nodeTypes = {
 
 const INITIAL_NODES_DATA: Record<string, any[]> = {
   seed: [
-    { label: 'Variables', type: 'concept', icon: 'Variable', description: 'Cajas donde guardas información. El primer paso del micelio.' },
-    { label: 'Terminal', type: 'tool', icon: 'Terminal', description: 'Tu portal de comandos para hablar con el ordenador.' },
-    { label: 'HTML', type: 'concept', icon: 'FileCode', description: 'El esqueleto de la web. Etiquetas y estructura.' },
-    { label: 'Python', type: 'concept', icon: 'Zap', description: 'Lenguaje versátil y legible. La puerta a la IA.' },
-  ],
-  Variables: [
-    { label: 'Tipos de Datos', type: 'concept', icon: 'Type', description: 'Nombres, números, verdades y mentiras (booleans).' },
-    { label: 'Frustración', type: 'mindset', icon: 'Wind', description: 'Es normal que no funcione a la primera. Respira.' },
-    { label: 'JavaScript', type: 'concept', icon: 'Code2', description: 'El lenguaje que da vida a la web interactiva.' },
-  ],
-  Terminal: [
-    { label: 'Git', type: 'tool', icon: 'GitBranch', description: 'Control de versiones. Tu máquina del tiempo de código.' },
-    { label: 'Node.js', type: 'tool', icon: 'Server', description: 'JavaScript en el servidor. Potencia pura.' },
-  ],
-  HTML: [
-    { label: 'CSS', type: 'concept', icon: 'Palette', description: 'Estilo y diseño. Colores, fuentes y layouts.' },
-    { label: 'Next.js', type: 'tool', icon: 'Layers', description: 'El framework de React para aplicaciones web potentes.' },
-  ],
-  CSS: [
-    { label: 'Flexbox & Grid', type: 'concept', icon: 'Layout', description: 'Sistemas para organizar elementos en el espacio.' },
-    { label: 'Diseño UI', type: 'mindset', icon: 'Figma', description: 'Pensar en el usuario antes de tirar la primera línea.' },
-  ],
-  JavaScript: [
-    { label: 'TypeScript', type: 'concept', icon: 'ShieldCheck', description: 'JavaScript con superpoderes de tipado. Menos errores.' },
-    { label: 'React', type: 'tool', icon: 'Atom', description: 'Librería para interfaces de usuario basadas en componentes.' },
-    { label: 'Node.js', type: 'tool', icon: 'Server', description: 'Escalabilidad y velocidad en el backend.' },
+    { label: 'Variables', type: 'concept', icon: 'Variable', description: 'El primer paso del micelio.' },
+    { label: 'Terminal', type: 'tool', icon: 'Terminal', description: 'Tu portal de comandos.' },
+    { label: 'HTML', type: 'concept', icon: 'FileCode', description: 'El esqueleto de la web.' },
+    { label: 'Python', type: 'concept', icon: 'Zap', description: 'La puerta a la IA y la Ciencia de Datos.' },
   ],
   Python: [
-    { label: 'IA & Machine Learning', type: 'concept', icon: 'Brain', description: 'Enseñar a las máquinas a aprender de los datos.' },
-    { label: 'FastAPI', type: 'tool', icon: 'FastForward', description: 'Creación de APIs rápidas y modernas con Python.' },
+    { label: 'IA & Machine Learning', type: 'concept', icon: 'Brain', description: 'Enseñar a las máquinas a aprender.' },
+    { label: 'Data Science', type: 'concept', icon: 'Database', description: 'Extraer valor y predicciones de los datos.' },
+    { label: 'FastAPI', type: 'tool', icon: 'Zap', description: 'Backend moderno y rápido con Python.' },
   ],
   'IA & Machine Learning': [
-    { label: 'Neural Networks', type: 'concept', icon: 'Network', description: 'Modelos inspirados en el cerebro humano.' },
-    { label: 'Ética en IA', type: 'mindset', icon: 'Scale', description: 'El poder conlleva responsabilidad. Sesgos y límites.' },
+    { label: 'Scikit-learn', type: 'tool', icon: 'Settings', description: 'Librería estándar para algoritmos de Machine Learning.' },
+    { label: 'TensorFlow', type: 'tool', icon: 'Cpu', description: 'La potencia de Google para Redes Neuronales.' },
+    { label: 'PyTorch', type: 'tool', icon: 'Flame', description: 'La herramienta favorita de los investigadores de IA.' },
   ],
-  TypeScript: [
-    { label: 'Interfaces', type: 'concept', icon: 'Database', description: 'Contratos que definen la forma de tus datos.' },
-    { label: 'Next.js', type: 'tool', icon: 'Rocket', description: 'Fullstack con la seguridad de TypeScript.' },
+  'Data Science': [
+    { label: 'Pandas', type: 'tool', icon: 'Table', description: 'Manipulación de tablas de datos masivas.' },
+    { label: 'NumPy', type: 'tool', icon: 'Hash', description: 'Cálculo matemático de alto rendimiento.' },
+  ],
+  JavaScript: [
+    { label: 'React', type: 'tool', icon: 'Atom', description: 'Interfaces de usuario modernas y declarativas.' },
+    { label: 'TypeScript', type: 'concept', icon: 'ShieldCheck', description: 'Seguridad y orden para tu código JS.' },
+    { label: 'Node.js', type: 'tool', icon: 'Server', description: 'JavaScript en el servidor.' },
+  ],
+  React: [
+    { label: 'Next.js', type: 'tool', icon: 'Rocket', description: 'El estándar para apps web de alto rendimiento.' },
+    { label: 'Zustand', type: 'tool', icon: 'Box', description: 'Gestión de estado simple y potente (¡como esta app!).' },
+    { label: 'Tailwind CSS', type: 'tool', icon: 'Palette', description: 'Estilizado rápido mediante utilidades.' },
   ],
   'Node.js': [
-    { label: 'Express', type: 'tool', icon: 'Activity', description: 'El estándar para crear servidores web minimalistas.' },
-    { label: 'C#', type: 'concept', icon: 'Hash', description: 'Lenguaje robusto de Microsoft para todo tipo de apps.' },
+    { label: 'Express', type: 'tool', icon: 'Activity', description: 'Servidores web rápidos y minimalistas.' },
+    { label: 'Databases', type: 'concept', icon: 'HardDrive', description: 'Donde vive la memoria de tus aplicaciones.' },
+  ],
+  Databases: [
+    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'La base de datos SQL más avanzada y robusta.' },
+    { label: 'MongoDB', type: 'tool', icon: 'Leaf', description: 'Almacenamiento flexible basado en documentos.' },
+    { label: 'Prisma', type: 'tool', icon: 'Compass', description: 'La forma más moderna de hablar con tu base de datos.' },
   ],
   'C#': [
-    { label: '.NET', type: 'tool', icon: 'Box', description: 'Plataforma para construir apps de escritorio, web y móvil.' },
-    { label: 'Unity', type: 'tool', icon: 'Gamepad2', description: 'Motor de videojuegos líder en la industria.' },
-    { label: 'F#', type: 'concept', icon: 'Binary', description: 'Programación funcional elegante en el ecosistema .NET.' },
-  ],
-  'F#': [
-    { label: 'Inmutabilidad', type: 'concept', icon: 'Lock', description: 'Datos que no cambian. Código predecible y seguro.' },
+    { label: 'Unity', type: 'tool', icon: 'Gamepad2', description: 'Crea mundos y experiencias en 3D y 2D.' },
+    { label: '.NET Core', type: 'tool', icon: 'Box', description: 'Backend empresarial escalable.' },
   ],
 };
 
