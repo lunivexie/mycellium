@@ -62,7 +62,7 @@ Para inicializar tu propio micelio, sigue estos pasos sagrados:
 
 ```bash
 # 1. Transportar el código
-git clone https://github.com/tu-usuario/the-lunivex-mycelium.git
+git clone https://github.com/lunivexie/mycelium.git
 
 # 2. Nutrir con dependencias
 npm install --legacy-peer-deps
