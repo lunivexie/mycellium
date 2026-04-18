@@ -28,7 +28,7 @@ const initialNodes: Node[] = [
   {
     id: 'seed',
     type: 'lunivex',
-    position: { x: 250, y: 250 },
+    position: { x: 0, y: 0 },
     data: { 
       label: 'Inicio: La Semilla Tech', 
       type: 'mindset', 

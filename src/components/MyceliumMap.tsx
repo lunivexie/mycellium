@@ -110,7 +110,7 @@ const MyceliumMap = () => {
   };
 
   return (
-    <div ref={reactFlowWrapper} style={{ width: '100%', height: '100%' }}>
+    <div ref={reactFlowWrapper} style={{ width: '100%', height: '100vh', position: 'relative' }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -124,7 +124,7 @@ const MyceliumMap = () => {
         nodeTypes={nodeTypes}
         fitView
       >
-        <Background color="#333" gap={20} />
+        <Background color="#111" gap={20} />
         <Controls />
       </ReactFlow>
     </div>
