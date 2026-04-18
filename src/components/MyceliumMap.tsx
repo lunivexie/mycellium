@@ -15,24 +15,50 @@ const nodeTypes = {
   lunivex: LunivexCardNode,
 };
 
-// Sinergias: Al conectar Nodo A con Nodo B, se generan los Nodos C, D, E...
+// Alquimia de Conocimiento: El corazón de la interactividad
 const SYNERGIES: Record<string, any[]> = {
   'IA & Machine Learning+Python': [
-    { label: 'Scikit-learn', type: 'tool', icon: 'Settings', description: 'ML Clásico.' },
-    { label: 'TensorFlow', type: 'tool', icon: 'Cpu', description: 'Deep Learning de Google.' },
-    { label: 'PyTorch', type: 'tool', icon: 'Flame', description: 'Deep Learning de Meta.' },
+    { label: 'Scikit-learn', type: 'tool', icon: 'Settings', description: 'Algoritmos de ML.' },
+    { label: 'TensorFlow', type: 'tool', icon: 'Cpu', description: 'Redes neuronales.' },
+    { label: 'PyTorch', type: 'tool', icon: 'Flame', description: 'Investigación de IA.' },
   ],
   'Data Science+Python': [
-    { label: 'Pandas', type: 'tool', icon: 'Table', description: 'Análisis de datos.' },
-    { label: 'NumPy', type: 'tool', icon: 'Hash', description: 'Cálculo numérico.' },
+    { label: 'Pandas', type: 'tool', icon: 'Table', description: 'Limpieza de datos.' },
+    { label: 'NumPy', type: 'tool', icon: 'Hash', description: 'Matrices numéricas.' },
   ],
   'JavaScript+React': [
-    { label: 'Next.js', type: 'tool', icon: 'Rocket', description: 'SSR Framework.' },
-    { label: 'Zustand', type: 'tool', icon: 'Box', description: 'Estado simple.' },
+    { label: 'Next.js', type: 'tool', icon: 'Rocket', description: 'Fullstack React.' },
+    { label: 'Zustand', type: 'tool', icon: 'Box', description: 'Estado global.' },
+    { label: 'Framer Motion', type: 'tool', icon: 'Move', description: 'Animaciones mágicas.' },
   ],
   'Databases+Node.js': [
-    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'SQL Avanzado.' },
     { label: 'Prisma', type: 'tool', icon: 'Compass', description: 'ORM Moderno.' },
+    { label: 'Express', type: 'tool', icon: 'Activity', description: 'Servidor minimalista.' },
+  ],
+  'HTML+CSS': [
+    { label: 'Flexbox & Grid', type: 'concept', icon: 'Layout', description: 'Control espacial.' },
+    { label: 'Diseño Responsivo', type: 'concept', icon: 'Smartphone', description: 'Adaptación de pantalla.' },
+  ],
+  'CSS+JavaScript': [
+    { label: 'Tailwind CSS', type: 'tool', icon: 'Palette', description: 'Estilos por código.' },
+    { label: 'Framer Motion', type: 'tool', icon: 'Sparkles', description: 'Interactividad visual.' },
+  ],
+  'Node.js+React': [
+    { label: 'Fullstack App', type: 'mindset', icon: 'Globe', description: 'Aplicación completa.' },
+    { label: 'Autenticación', type: 'concept', icon: 'Lock', description: 'Seguridad de usuario.' },
+  ],
+  'C#+Unity': [
+    { label: 'Shaders', type: 'concept', icon: 'Sun', description: 'Visuales de juego.' },
+    { label: 'Game Physics', type: 'concept', icon: 'Wind', description: 'Leyes físicas digitales.' },
+  ],
+  'Next.js+Prisma': [
+    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'Base de datos ideal.' },
+  ],
+  'Variables+Bucles': [
+    { label: 'Lógica de Control', type: 'concept', icon: 'Workflow', description: 'Flujo de ejecución.' },
+  ],
+  'Funciones+Variables': [
+    { label: 'Scope (Alcance)', type: 'concept', icon: 'Target', description: 'Donde viven tus datos.' },
   ],
 };
 
