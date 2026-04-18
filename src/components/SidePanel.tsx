@@ -1,72 +1,74 @@
+import { useState, useEffect } from 'react';
 import { useMyceliumStore } from '../store/useMyceliumStore';
 import * as Icons from 'lucide-react';
 import { type LucideIcon } from 'lucide-react';
 
-const KNOWLEDGE_BASE: Record<string, { code: string; longDesc: string; tech: string }> = {
+const KNOWLEDGE_BASE: Record<string, { code: string; longDesc: string; tech: string; quiz?: { q: string; a: string[]; correct: number } }> = {
   'Inicio: La Semilla Tech': {
     tech: 'Mindset',
     longDesc: 'El micelio es una metáfora de cómo aprendemos: pequeñas conexiones que forman una red inmensa. Empieza por lo básico y deja que la curiosidad guíe tu crecimiento.',
     code: '// El viaje comienza\nconsole.log("Hello, World!");'
   },
+  'Variables': {
+    tech: 'Concept',
+    longDesc: 'Las variables son contenedores para almacenar datos. Imagínalas como cajas con una etiqueta (nombre) y un contenido (valor).',
+    code: 'let user = "Angel";\nconst id = 12345;\nvar oldWay = true;',
+    quiz: {
+      q: '¿Cuál es la forma moderna y recomendada de declarar una variable que puede cambiar?',
+      a: ['var', 'let', 'const', 'set'],
+      correct: 1
+    }
+  },
+  'Bucles': {
+    tech: 'Concept',
+    longDesc: 'Los bucles permiten ejecutar un bloque de código repetidamente mientras se cumpla una condición. Son el motor de la automatización.',
+    code: 'for (let i = 0; i < 5; i++) {\n  console.log("Germinando semilla #" + i);\n}',
+    quiz: {
+      q: '¿Qué palabra clave se usa para recorrer un arreglo en JavaScript?',
+      a: ['while', 'if', 'forEach', 'return'],
+      correct: 2
+    }
+  },
+  'Funciones': {
+    tech: 'Concept',
+    longDesc: 'Las funciones son bloques de código reutilizables diseñados para realizar una tarea particular. Ayudan a mantener el micelio organizado.',
+    code: 'function germinar(tipo) {\n  return `Planta de ${tipo} creada`;\n}\n\nconst miPlanta = germinar("Cian");',
+    quiz: {
+      q: '¿Cómo se llama a una función que se define sin nombre y se guarda en una variable?',
+      a: ['Función Anónima', 'Función Estática', 'Función Nula', 'Función Global'],
+      correct: 0
+    }
+  },
   'Python': {
     tech: 'Language',
     longDesc: 'Python es un lenguaje interpretado de alto nivel conocido por su legibilidad. Es el estándar de oro para IA, ciencia de datos y automatización.',
-    code: 'def greet(name):\n    return f"Hola, {name}!"\n\nprint(greet("Semilla"))'
+    code: 'def greet(name):\n    return f"Hola, {name}!"\n\nprint(greet("Semilla"))',
+    quiz: {
+      q: '¿Qué indentación usa Python por convención?',
+      a: ['2 espacios', '4 espacios', 'Tabuladores', 'No requiere'],
+      correct: 1
+    }
   },
   'IA & Machine Learning': {
     tech: 'Concept',
-    longDesc: 'Disciplina que permite a las computadoras aprender de los datos sin ser programadas explícitamente. Se divide en aprendizaje supervisado, no supervisado y por refuerzo.',
-    code: 'from sklearn.model_selection import train_test_split\n\n# Dividir datos para entrenar\nX_train, X_test, y_train, y_test = train_test_split(X, y)'
+    longDesc: 'Disciplina que permite a las computadoras aprender de los datos sin ser programadas explícitamente.',
+    code: 'from sklearn.model_selection import train_test_split\n\n# Dividir datos para entrenar\nX_train, X_test, y_train, y_test = train_test_split(X, y)',
+    quiz: {
+      q: '¿Qué tipo de aprendizaje usa datos etiquetados?',
+      a: ['No supervisado', 'Por refuerzo', 'Supervisado', 'Cuántico'],
+      correct: 2
+    }
   },
-  'TensorFlow': {
-    tech: 'Library',
-    longDesc: 'Plataforma de código abierto de Google para el aprendizaje automático de extremo a extremo, especialmente potente para Deep Learning.',
-    code: 'import tensorflow as tf\n\nmodel = tf.keras.Sequential([\n  tf.keras.layers.Dense(128, activation="relu"),\n  tf.keras.layers.Dense(10)\n])'
-  },
-  'PyTorch': {
-    tech: 'Library',
-    longDesc: 'Framework de aprendizaje automático desarrollado por Meta que destaca por su flexibilidad y facilidad para el prototipado de modelos complejos.',
-    code: 'import torch\nimport torch.nn as nn\n\nclass Net(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc = nn.Linear(10, 2)'
-  },
-  'FastAPI': {
-    tech: 'Framework',
-    longDesc: 'Framework moderno y rápido para construir APIs con Python basado en tipos estándar de Python 3.7+.',
-    code: 'from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get("/")\ndef read_root():\n    return {"Hello": "Mycelium"}'
-  },
-  'JavaScript': {
-    tech: 'Language',
-    longDesc: 'El lenguaje de programación de la web. Permite crear interfaces interactivas y dinámicas en el navegador y el servidor.',
-    code: 'const double = (n) => n * 2;\nconst numbers = [1, 2, 3];\nconsole.log(numbers.map(double));'
-  },
-  'React': {
-    tech: 'Library',
-    longDesc: 'Librería de Facebook para construir interfaces de usuario basadas en componentes declarativos y reutilizables.',
-    code: 'function Welcome() {\n  const [count, setCount] = useState(0);\n  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;\n}'
-  },
-  'Next.js': {
-    tech: 'Framework',
-    longDesc: 'El framework de React para la web. Ofrece renderizado en el servidor (SSR) y generación de sitios estáticos (SSG) de forma nativa.',
-    code: 'export default async function Page() {\n  const data = await fetch("https://api...");\n  return <h1>{data.title}</h1>;\n}'
-  },
-  'PostgreSQL': {
-    tech: 'Database',
-    longDesc: 'Sistema de gestión de bases de datos relacionales de código abierto avanzado, conocido por su fiabilidad y cumplimiento de estándares.',
-    code: 'SELECT users.name, orders.total \nFROM users \nJOIN orders ON users.id = orders.user_id \nWHERE total > 100;'
-  },
-  'Prisma': {
-    tech: 'ORM',
-    longDesc: 'ORM de nueva generación para Node.js y TypeScript que hace que trabajar con bases de datos sea fácil y seguro.',
-    code: 'const user = await prisma.user.create({\n  data: {\n    email: "angel@lunivex.com",\n    name: "Lunivex Seed",\n  },\n})'
-  },
-  'Zustand': {
-    tech: 'State Management',
-    longDesc: 'Una solución de gestión de estado pequeña, rápida y escalable. Muy popular por su simplicidad comparada con Redux.',
-    code: 'const useStore = create((set) => ({\n  seeds: 0,\n  addSeed: () => set((state) => ({ seeds: state.seeds + 1 })),\n}))'
-  }
+  // ... (se pueden expandir más)
 };
 
 const SidePanel = () => {
   const { selectedNode } = useMyceliumStore();
+  const [quizState, setQuizState] = useState<{ answered: boolean; correct: boolean | null }>({ answered: false, correct: null });
+
+  useEffect(() => {
+    setQuizState({ answered: false, correct: null });
+  }, [selectedNode]);
 
   if (!selectedNode) return null;
 
@@ -76,6 +78,12 @@ const SidePanel = () => {
     tech: data.type || 'Concept', 
     longDesc: data.description, 
     code: '// Código en proceso de germinación...\nconsole.log("Explorando...");' 
+  };
+
+  const handleQuiz = (index: number) => {
+    if (info.quiz) {
+      setQuizState({ answered: true, correct: index === info.quiz.correct });
+    }
   };
 
   const IconComponent = (Icons[data.icon as keyof typeof Icons] as LucideIcon) || Icons.HelpCircle;
@@ -122,43 +130,69 @@ const SidePanel = () => {
       </p>
 
       <div style={{ position: 'relative', background: '#050505', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '24px' }}>
-        <div style={{ position: 'absolute', top: '10px', right: '15px', fontSize: '10px', color: 'rgba(255,255,255,0.2)' }}>
-          READONLY
-        </div>
         <pre style={{ margin: 0, fontSize: '13px', color: 'var(--cyan-ethereal)', fontFamily: '"Fira Code", monospace', overflowX: 'auto', whiteSpace: 'pre-wrap' }}>
           {info.code}
         </pre>
       </div>
 
-      <button
-        style={{
-          width: '100%',
-          padding: '14px',
-          background: 'transparent',
-          border: '1px solid var(--angelic-gold)',
-          borderRadius: '10px',
-          color: 'var(--angelic-gold)',
-          cursor: 'pointer',
-          fontWeight: '600',
-          fontSize: '14px',
-          transition: 'all 0.3s ease',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '10px'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'rgba(255, 249, 196, 0.05)';
-          e.currentTarget.style.boxShadow = 'var(--glow-gold)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'transparent';
-          e.currentTarget.style.boxShadow = 'none';
-        }}
-      >
-        <Icons.Trophy size={18} />
-        Sincronizar Conocimiento
-      </button>
+      {info.quiz && !quizState.answered && (
+        <div style={{ background: 'rgba(255,255,255,0.02)', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+          <h4 style={{ margin: '0 0 15px 0', fontSize: '14px', color: 'var(--angelic-gold)' }}>Desafío de Germinación:</h4>
+          <p style={{ fontSize: '13px', marginBottom: '15px' }}>{info.quiz.q}</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {info.quiz.a.map((opt, i) => (
+              <button
+                key={i}
+                onClick={() => handleQuiz(i)}
+                style={{
+                  padding: '10px',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '6px',
+                  color: 'white',
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  transition: 'all 0.2s'
+                }}
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {quizState.answered && (
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '20px', 
+          background: quizState.correct ? 'rgba(178, 223, 219, 0.1)' : 'rgba(255, 138, 128, 0.1)',
+          borderRadius: '12px',
+          border: `1px solid ${quizState.correct ? 'var(--mint-tech)' : '#ff8a80'}`,
+          animation: 'fadeIn 0.5s'
+        }}>
+          {quizState.correct ? (
+            <>
+              <Icons.CheckCircle size={32} color="var(--mint-tech)" style={{ marginBottom: '10px' }} />
+              <div style={{ color: 'var(--mint-tech)', fontWeight: '600' }}>¡Conocimiento Sincronizado!</div>
+              <p style={{ fontSize: '12px', marginTop: '5px', color: 'var(--text-secondary)' }}>Has fortalecido este nodo en tu micelio.</p>
+            </>
+          ) : (
+            <>
+              <Icons.XCircle size={32} color="#ff8a80" style={{ marginBottom: '10px' }} />
+              <div style={{ color: '#ff8a80', fontWeight: '600' }}>Error de Conexión</div>
+              <p style={{ fontSize: '12px', marginTop: '5px', color: 'var(--text-secondary)' }}>Vuelve a leer la descripción e inténtalo de nuevo.</p>
+              <button 
+                onClick={() => setQuizState({ answered: false, correct: null })}
+                style={{ background: 'none', border: 'none', color: 'white', textDecoration: 'underline', cursor: 'pointer', fontSize: '12px', marginTop: '10px' }}
+              >
+                Reintentar
+              </button>
+            </>
+          )}
+        </div>
+      )}
 
       <style>{`
         @keyframes slideIn {

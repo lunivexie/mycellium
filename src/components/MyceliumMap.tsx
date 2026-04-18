@@ -39,6 +39,8 @@ const SYNERGIES: Record<string, any[]> = {
 const INITIAL_NODES_DATA: Record<string, any[]> = {
   seed: [
     { label: 'Variables', type: 'concept', icon: 'Variable', description: 'El primer paso del micelio.' },
+    { label: 'Bucles', type: 'concept', icon: 'Repeat', description: 'Automatización y repetición.' },
+    { label: 'Funciones', type: 'concept', icon: 'Cpu', description: 'Bloques de código reutilizables.' },
     { label: 'Terminal', type: 'tool', icon: 'Terminal', description: 'Tu portal de comandos.' },
     { label: 'HTML', type: 'concept', icon: 'FileCode', description: 'El esqueleto de la web.' },
     { label: 'Python', type: 'concept', icon: 'Zap', description: 'La puerta a la IA y la Ciencia de Datos.' },

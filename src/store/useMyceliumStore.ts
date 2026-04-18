@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { 
   addEdge, 
   applyNodeChanges, 
@@ -24,6 +25,7 @@ interface MyceliumState {
   addNode: (node: Node) => void;
   setSelectedNode: (node: Node | null) => void;
   setHasInteracted: (val: boolean) => void;
+  resetProgress: () => void;
 }
 
 const initialNodes: Node[] = [
@@ -40,43 +42,51 @@ const initialNodes: Node[] = [
   },
 ];
 
-export const useMyceliumStore = create<MyceliumState>((set, get) => ({
-  nodes: initialNodes,
-  edges: [],
-  selectedNode: null,
-  hasInteracted: false,
-  onNodesChange: (changes: NodeChange[]) => {
-    set({
-      nodes: applyNodeChanges(changes, get().nodes),
-      hasInteracted: true,
-    });
-  },
-  onEdgesChange: (changes: EdgeChange[]) => {
-    set({
-      edges: applyEdgeChanges(changes, get().edges),
-    });
-  },
-  onConnect: (connection: Connection) => {
-    const newEdge = { 
-      ...connection, 
-      className: 'gold-glow', 
-      animated: true 
-    };
-    set({
-      edges: addEdge(newEdge, get().edges),
-      hasInteracted: true,
-    });
-  },
-  addNode: (node: Node) => {
-    set({
-      nodes: [...get().nodes, node],
-    });
-  },
-  setSelectedNode: (node: Node | null) => {
-    set({
-      selectedNode: node,
-      hasInteracted: true,
-    });
-  },
-  setHasInteracted: (val: boolean) => set({ hasInteracted: val }),
-}));
+export const useMyceliumStore = create<MyceliumState>()(
+  persist(
+    (set, get) => ({
+      nodes: initialNodes,
+      edges: [],
+      selectedNode: null,
+      hasInteracted: false,
+      onNodesChange: (changes: NodeChange[]) => {
+        set({
+          nodes: applyNodeChanges(changes, get().nodes),
+          hasInteracted: true,
+        });
+      },
+      onEdgesChange: (changes: EdgeChange[]) => {
+        set({
+          edges: applyEdgeChanges(changes, get().edges),
+        });
+      },
+      onConnect: (connection: Connection) => {
+        const newEdge = { 
+          ...connection, 
+          className: 'gold-glow', 
+          animated: true 
+        };
+        set({
+          edges: addEdge(newEdge, get().edges),
+          hasInteracted: true,
+        });
+      },
+      addNode: (node: Node) => {
+        set({
+          nodes: [...get().nodes, node],
+        });
+      },
+      setSelectedNode: (node: Node | null) => {
+        set({
+          selectedNode: node,
+          hasInteracted: true,
+        });
+      },
+      setHasInteracted: (val: boolean) => set({ hasInteracted: val }),
+      resetProgress: () => set({ nodes: initialNodes, edges: [], hasInteracted: false, selectedNode: null }),
+    }),
+    {
+      name: 'lunivex-mycelium-storage',
+    }
+  )
+);
