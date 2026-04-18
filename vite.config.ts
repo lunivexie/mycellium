@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/mycellium/', // Actualizado para coincidir exactamente con el nombre del repo 'mycellium'
+  base: '/mycellium/', // Match GitHub repo: lunivexie.github.io/mycellium/
 })
