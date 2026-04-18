@@ -21,43 +21,52 @@ const INITIAL_NODES_DATA: Record<string, any[]> = {
     { label: 'Terminal', type: 'tool', icon: 'Terminal', description: 'Tu portal de comandos.' },
     { label: 'HTML', type: 'concept', icon: 'FileCode', description: 'El esqueleto de la web.' },
     { label: 'Python', type: 'concept', icon: 'Zap', description: 'La puerta a la IA y la Ciencia de Datos.' },
+    { label: 'C#', type: 'concept', icon: 'Hash', description: 'Lenguaje robusto para apps y juegos.' },
   ],
   Python: [
     { label: 'IA & Machine Learning', type: 'concept', icon: 'Brain', description: 'Enseñar a las máquinas a aprender.' },
     { label: 'Data Science', type: 'concept', icon: 'Database', description: 'Extraer valor y predicciones de los datos.' },
     { label: 'FastAPI', type: 'tool', icon: 'Zap', description: 'Backend moderno y rápido con Python.' },
+    { label: 'JavaScript', type: 'concept', icon: 'Code2', description: 'Combina Python con la web.' },
   ],
   'IA & Machine Learning': [
-    { label: 'Scikit-learn', type: 'tool', icon: 'Settings', description: 'Librería estándar para algoritmos de Machine Learning.' },
+    { label: 'Scikit-learn', type: 'tool', icon: 'Settings', description: 'Librería estándar para algoritmos de ML.' },
     { label: 'TensorFlow', type: 'tool', icon: 'Cpu', description: 'La potencia de Google para Redes Neuronales.' },
-    { label: 'PyTorch', type: 'tool', icon: 'Flame', description: 'La herramienta favorita de los investigadores de IA.' },
+    { label: 'PyTorch', type: 'tool', icon: 'Flame', description: 'Favorita para investigación de IA.' },
+    { label: 'Ética en IA', type: 'mindset', icon: 'Scale', description: 'Responsabilidad en el desarrollo de modelos.' },
   ],
   'Data Science': [
     { label: 'Pandas', type: 'tool', icon: 'Table', description: 'Manipulación de tablas de datos masivas.' },
     { label: 'NumPy', type: 'tool', icon: 'Hash', description: 'Cálculo matemático de alto rendimiento.' },
+    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'Almacena tus datos procesados.' },
+  ],
+  HTML: [
+    { label: 'CSS', type: 'concept', icon: 'Palette', description: 'Estilo y diseño de interfaces.' },
+    { label: 'JavaScript', type: 'concept', icon: 'Code2', description: 'Lógica para tus sitios web.' },
+  ],
+  CSS: [
+    { label: 'Tailwind CSS', type: 'tool', icon: 'Palette', description: 'Estilizado rápido mediante utilidades.' },
+    { label: 'Diseño UI', type: 'mindset', icon: 'Figma', description: 'Principios de experiencia de usuario.' },
   ],
   JavaScript: [
-    { label: 'React', type: 'tool', icon: 'Atom', description: 'Interfaces de usuario modernas y declarativas.' },
+    { label: 'React', type: 'tool', icon: 'Atom', description: 'Interfaces de usuario basadas en componentes.' },
     { label: 'TypeScript', type: 'concept', icon: 'ShieldCheck', description: 'Seguridad y orden para tu código JS.' },
     { label: 'Node.js', type: 'tool', icon: 'Server', description: 'JavaScript en el servidor.' },
   ],
   React: [
     { label: 'Next.js', type: 'tool', icon: 'Rocket', description: 'El estándar para apps web de alto rendimiento.' },
-    { label: 'Zustand', type: 'tool', icon: 'Box', description: 'Gestión de estado simple y potente (¡como esta app!).' },
-    { label: 'Tailwind CSS', type: 'tool', icon: 'Palette', description: 'Estilizado rápido mediante utilidades.' },
+    { label: 'Zustand', type: 'tool', icon: 'Box', description: 'Gestión de estado simple y potente.' },
+    { label: 'Tailwind CSS', type: 'tool', icon: 'Palette', description: 'Diseño moderno para tus componentes.' },
   ],
   'Node.js': [
     { label: 'Express', type: 'tool', icon: 'Activity', description: 'Servidores web rápidos y minimalistas.' },
-    { label: 'Databases', type: 'concept', icon: 'HardDrive', description: 'Donde vive la memoria de tus aplicaciones.' },
-  ],
-  Databases: [
-    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'La base de datos SQL más avanzada y robusta.' },
-    { label: 'MongoDB', type: 'tool', icon: 'Leaf', description: 'Almacenamiento flexible basado en documentos.' },
-    { label: 'Prisma', type: 'tool', icon: 'Compass', description: 'La forma más moderna de hablar con tu base de datos.' },
+    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'Persistencia de datos relacional.' },
+    { label: 'Prisma', type: 'tool', icon: 'Compass', description: 'ORM moderno para bases de datos.' },
   ],
   'C#': [
-    { label: 'Unity', type: 'tool', icon: 'Gamepad2', description: 'Crea mundos y experiencias en 3D y 2D.' },
-    { label: '.NET Core', type: 'tool', icon: 'Box', description: 'Backend empresarial escalable.' },
+    { label: 'Unity', type: 'tool', icon: 'Gamepad2', description: 'Desarrollo de videojuegos profesionales.' },
+    { label: '.NET Core', type: 'tool', icon: 'Box', description: 'Ecosistema para aplicaciones robustas.' },
+    { label: 'TypeScript', type: 'concept', icon: 'ShieldCheck', description: 'Estructura similar para la web.' },
   ],
 };
 
