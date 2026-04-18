@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/mycelium/', // This should match your repository name
+  base: '/', // Cambiado de '/mycelium/' a '/' para dominio personalizado
 })
