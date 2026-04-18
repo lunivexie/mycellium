@@ -1,11 +1,13 @@
 import MyceliumMap from './components/MyceliumMap';
 import SidePanel from './components/SidePanel';
+import FloatingHint from './components/FloatingHint';
 
 function App() {
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
       <MyceliumMap />
       <SidePanel />
+      <FloatingHint />
       
       {/* Header / Logo */}
       <div style={{

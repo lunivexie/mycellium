@@ -17,11 +17,13 @@ interface MyceliumState {
   nodes: Node[];
   edges: Edge[];
   selectedNode: Node | null;
+  hasInteracted: boolean;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   onConnect: OnConnect;
   addNode: (node: Node) => void;
   setSelectedNode: (node: Node | null) => void;
+  setHasInteracted: (val: boolean) => void;
 }
 
 const initialNodes: Node[] = [
@@ -42,9 +44,11 @@ export const useMyceliumStore = create<MyceliumState>((set, get) => ({
   nodes: initialNodes,
   edges: [],
   selectedNode: null,
+  hasInteracted: false,
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
+      hasInteracted: true,
     });
   },
   onEdgesChange: (changes: EdgeChange[]) => {
@@ -60,6 +64,7 @@ export const useMyceliumStore = create<MyceliumState>((set, get) => ({
     };
     set({
       edges: addEdge(newEdge, get().edges),
+      hasInteracted: true,
     });
   },
   addNode: (node: Node) => {
@@ -70,6 +75,8 @@ export const useMyceliumStore = create<MyceliumState>((set, get) => ({
   setSelectedNode: (node: Node | null) => {
     set({
       selectedNode: node,
+      hasInteracted: true,
     });
   },
+  setHasInteracted: (val: boolean) => set({ hasInteracted: val }),
 }));
