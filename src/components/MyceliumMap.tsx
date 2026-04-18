@@ -15,6 +15,27 @@ const nodeTypes = {
   lunivex: LunivexCardNode,
 };
 
+// Sinergias: Al conectar Nodo A con Nodo B, se generan los Nodos C, D, E...
+const SYNERGIES: Record<string, any[]> = {
+  'IA & Machine Learning+Python': [
+    { label: 'Scikit-learn', type: 'tool', icon: 'Settings', description: 'ML Clásico.' },
+    { label: 'TensorFlow', type: 'tool', icon: 'Cpu', description: 'Deep Learning de Google.' },
+    { label: 'PyTorch', type: 'tool', icon: 'Flame', description: 'Deep Learning de Meta.' },
+  ],
+  'Data Science+Python': [
+    { label: 'Pandas', type: 'tool', icon: 'Table', description: 'Análisis de datos.' },
+    { label: 'NumPy', type: 'tool', icon: 'Hash', description: 'Cálculo numérico.' },
+  ],
+  'JavaScript+React': [
+    { label: 'Next.js', type: 'tool', icon: 'Rocket', description: 'SSR Framework.' },
+    { label: 'Zustand', type: 'tool', icon: 'Box', description: 'Estado simple.' },
+  ],
+  'Databases+Node.js': [
+    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'SQL Avanzado.' },
+    { label: 'Prisma', type: 'tool', icon: 'Compass', description: 'ORM Moderno.' },
+  ],
+};
+
 const INITIAL_NODES_DATA: Record<string, any[]> = {
   seed: [
     { label: 'Variables', type: 'concept', icon: 'Variable', description: 'El primer paso del micelio.' },
@@ -27,46 +48,20 @@ const INITIAL_NODES_DATA: Record<string, any[]> = {
     { label: 'IA & Machine Learning', type: 'concept', icon: 'Brain', description: 'Enseñar a las máquinas a aprender.' },
     { label: 'Data Science', type: 'concept', icon: 'Database', description: 'Extraer valor y predicciones de los datos.' },
     { label: 'FastAPI', type: 'tool', icon: 'Zap', description: 'Backend moderno y rápido con Python.' },
-    { label: 'JavaScript', type: 'concept', icon: 'Code2', description: 'Combina Python con la web.' },
-  ],
-  'IA & Machine Learning': [
-    { label: 'Scikit-learn', type: 'tool', icon: 'Settings', description: 'Librería estándar para algoritmos de ML.' },
-    { label: 'TensorFlow', type: 'tool', icon: 'Cpu', description: 'La potencia de Google para Redes Neuronales.' },
-    { label: 'PyTorch', type: 'tool', icon: 'Flame', description: 'Favorita para investigación de IA.' },
-    { label: 'Ética en IA', type: 'mindset', icon: 'Scale', description: 'Responsabilidad en el desarrollo de modelos.' },
-  ],
-  'Data Science': [
-    { label: 'Pandas', type: 'tool', icon: 'Table', description: 'Manipulación de tablas de datos masivas.' },
-    { label: 'NumPy', type: 'tool', icon: 'Hash', description: 'Cálculo matemático de alto rendimiento.' },
-    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'Almacena tus datos procesados.' },
-  ],
-  HTML: [
-    { label: 'CSS', type: 'concept', icon: 'Palette', description: 'Estilo y diseño de interfaces.' },
-    { label: 'JavaScript', type: 'concept', icon: 'Code2', description: 'Lógica para tus sitios web.' },
-  ],
-  CSS: [
-    { label: 'Tailwind CSS', type: 'tool', icon: 'Palette', description: 'Estilizado rápido mediante utilidades.' },
-    { label: 'Diseño UI', type: 'mindset', icon: 'Figma', description: 'Principios de experiencia de usuario.' },
   ],
   JavaScript: [
     { label: 'React', type: 'tool', icon: 'Atom', description: 'Interfaces de usuario basadas en componentes.' },
-    { label: 'TypeScript', type: 'concept', icon: 'ShieldCheck', description: 'Seguridad y orden para tu código JS.' },
     { label: 'Node.js', type: 'tool', icon: 'Server', description: 'JavaScript en el servidor.' },
   ],
-  React: [
-    { label: 'Next.js', type: 'tool', icon: 'Rocket', description: 'El estándar para apps web de alto rendimiento.' },
-    { label: 'Zustand', type: 'tool', icon: 'Box', description: 'Gestión de estado simple y potente.' },
-    { label: 'Tailwind CSS', type: 'tool', icon: 'Palette', description: 'Diseño moderno para tus componentes.' },
-  ],
   'Node.js': [
-    { label: 'Express', type: 'tool', icon: 'Activity', description: 'Servidores web rápidos y minimalistas.' },
-    { label: 'PostgreSQL', type: 'tool', icon: 'Database', description: 'Persistencia de datos relacional.' },
-    { label: 'Prisma', type: 'tool', icon: 'Compass', description: 'ORM moderno para bases de datos.' },
+    { label: 'Databases', type: 'concept', icon: 'HardDrive', description: 'Persistencia de datos.' },
+  ],
+  HTML: [
+    { label: 'CSS', type: 'concept', icon: 'Palette', description: 'Estilo y diseño web.' },
+    { label: 'JavaScript', type: 'concept', icon: 'Code2', description: 'Lógica web.' },
   ],
   'C#': [
-    { label: 'Unity', type: 'tool', icon: 'Gamepad2', description: 'Desarrollo de videojuegos profesionales.' },
-    { label: '.NET Core', type: 'tool', icon: 'Box', description: 'Ecosistema para aplicaciones robustas.' },
-    { label: 'TypeScript', type: 'concept', icon: 'ShieldCheck', description: 'Estructura similar para la web.' },
+    { label: 'Unity', type: 'tool', icon: 'Gamepad2', description: 'Desarrollo de videojuegos.' },
   ],
 };
 
@@ -84,9 +79,54 @@ const MyceliumMap = () => {
     setSelectedNode 
   } = useMyceliumStore();
 
+  const handleSynergy = useCallback((sourceId: string, targetId: string) => {
+    const sourceNode = nodes.find(n => n.id === sourceId);
+    const targetNode = nodes.find(n => n.id === targetId);
+    
+    if (!sourceNode || !targetNode) return;
+
+    const labels = [sourceNode.data.label, targetNode.data.label].sort();
+    const synergyKey = `${labels[0]}+${labels[1]}`;
+    
+    const synergyResults = SYNERGIES[synergyKey];
+    
+    if (synergyResults) {
+      synergyResults.forEach((data, index) => {
+        const newNodeId = `${data.label}-${Date.now()}-${index}`;
+        const position = {
+          x: targetNode.position.x + (index - 1) * 250,
+          y: targetNode.position.y + 250
+        };
+
+        const newNode: Node = {
+          id: newNodeId,
+          type: 'lunivex',
+          position,
+          data: { ...data },
+        };
+
+        addNode(newNode);
+        
+        onConnect({
+          source: targetId,
+          sourceHandle: null,
+          target: newNodeId,
+          targetHandle: null,
+        } as Connection);
+      });
+    }
+  }, [nodes, addNode, onConnect]);
+
   const onConnectStart = useCallback((_: any, { nodeId }: any) => {
     connectingNodeId.current = nodeId;
   }, []);
+
+  const onConnectInternal = useCallback((params: Connection) => {
+    onConnect(params);
+    if (params.source && params.target) {
+      handleSynergy(params.source, params.target);
+    }
+  }, [onConnect, handleSynergy]);
 
   const onConnectEnd = useCallback(
     (event: any) => {
@@ -140,7 +180,7 @@ const MyceliumMap = () => {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
+        onConnect={onConnectInternal}
         onConnectStart={onConnectStart}
         onConnectEnd={onConnectEnd}
         onNodeClick={onNodeClick}
