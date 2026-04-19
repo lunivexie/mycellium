@@ -57,34 +57,57 @@ kind: Pod`,quiz:{q:`¿Para qué sirve Kubernetes?`,a:[`Escribir CSS`,`Orquestar 
         }
         @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
-      `})]})},sz=()=>{let{tutorialFinished:e,finishTutorial:t}=nu(),[n,r]=(0,_.useState)(0);if(e)return null;let i=[{title:`Planta una Semilla`,desc:`Haz clic y arrastra desde el círculo dorado de un nodo hacia el vacío.`,visual:(0,$.jsxs)(`svg`,{width:`120`,height:`80`,viewBox:`0 0 120 80`,children:[(0,$.jsx)(`rect`,{x:`10`,y:`25`,width:`40`,height:`30`,rx:`4`,fill:`rgba(255,255,255,0.1)`,stroke:`var(--cyan-ethereal)`,strokeWidth:`1`}),(0,$.jsx)(`circle`,{cx:`50`,cy:`40`,r:`4`,fill:`var(--angelic-gold)`}),(0,$.jsx)(`path`,{d:`M 50 40 Q 80 40 100 20`,stroke:`var(--angelic-gold)`,strokeWidth:`2`,fill:`none`,strokeDasharray:`4`,className:`draw-path`}),(0,$.jsx)(`circle`,{cx:`100`,cy:`20`,r:`6`,fill:`var(--angelic-gold)`,opacity:`0.6`,className:`pulse-circle`}),(0,$.jsxs)(`g`,{className:`hand-move`,children:[(0,$.jsx)(`path`,{d:`M 50 40 L 100 20`,opacity:`0`}),(0,$.jsx)(`circle`,{cx:`50`,cy:`40`,r:`10`,fill:`rgba(255,255,255,0.2)`})]})]})},{title:`Fusiona Conocimiento`,desc:`Arrastra una tarjeta y suéltala directamente sobre otra para crear sinergias.`,visual:(0,$.jsxs)(`svg`,{width:`120`,height:`80`,viewBox:`0 0 120 80`,children:[(0,$.jsx)(`rect`,{x:`10`,y:`25`,width:`30`,height:`20`,rx:`2`,fill:`rgba(255,255,255,0.1)`,stroke:`var(--mint-tech)`,className:`node-a-move`}),(0,$.jsx)(`rect`,{x:`70`,y:`25`,width:`30`,height:`20`,rx:`2`,fill:`rgba(255,255,255,0.1)`,stroke:`var(--angelic-gold)`}),(0,$.jsx)(`path`,{d:`M 85 35 L 85 35`,className:`spark-effect`})]})},{title:`Explora el Codex`,desc:`Toca un nodo para abrir su información y completar el desafío.`,visual:(0,$.jsxs)(`svg`,{width:`120`,height:`80`,viewBox:`0 0 120 80`,children:[(0,$.jsx)(`rect`,{x:`40`,y:`25`,width:`40`,height:`30`,rx:`4`,fill:`rgba(255,255,255,0.1)`,stroke:`var(--cyan-ethereal)`}),(0,$.jsx)(`circle`,{cx:`60`,cy:`40`,r:`8`,fill:`var(--cyan-ethereal)`,className:`tap-animate`})]})}];return(0,$.jsxs)(`div`,{style:{position:`fixed`,bottom:`40px`,left:`50%`,transform:`translateX(-50%)`,width:`320px`,background:`rgba(10, 10, 10, 0.98)`,backdropFilter:`blur(20px)`,border:`2px solid var(--angelic-gold)`,borderRadius:`24px`,padding:`30px`,zIndex:9999,boxShadow:`0 0 60px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 249, 196, 0.2)`,animation:`slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)`,display:`block`},children:[(0,$.jsx)(`div`,{style:{background:`rgba(255,255,255,0.03)`,borderRadius:`16px`,padding:`20px`,marginBottom:`20px`,display:`flex`,justifyContent:`center`,border:`1px solid rgba(255,255,255,0.05)`},children:i[n].visual}),(0,$.jsx)(`h3`,{style:{margin:`0 0 10px 0`,fontSize:`20px`,color:`var(--angelic-gold)`,textAlign:`center`,fontWeight:`700`},children:i[n].title}),(0,$.jsx)(`p`,{style:{margin:`0 0 25px 0`,fontSize:`14px`,color:`var(--text-secondary)`,lineHeight:`1.6`,textAlign:`center`},children:i[n].desc}),(0,$.jsxs)(`div`,{style:{display:`flex`,justifyContent:`space-between`,alignItems:`center`},children:[(0,$.jsx)(`div`,{style:{display:`flex`,gap:`8px`},children:i.map((e,t)=>(0,$.jsx)(`div`,{style:{width:`8px`,height:`8px`,borderRadius:`50%`,background:t===n?`var(--angelic-gold)`:`rgba(255,255,255,0.1)`,transition:`all 0.3s`}},t))}),(0,$.jsx)(`button`,{onClick:()=>{n<i.length-1?r(n+1):t()},style:{background:`var(--angelic-gold)`,border:`none`,borderRadius:`12px`,padding:`10px 20px`,color:`#000`,fontWeight:`800`,fontSize:`13px`,cursor:`pointer`,boxShadow:`0 4px 15px rgba(255, 249, 196, 0.3)`},children:n<i.length-1?`Siguiente`:`¡Empezar!`})]}),(0,$.jsx)(`style`,{children:`
+      `})]})},sz=()=>{let{tutorialFinished:e,finishTutorial:t}=nu(),[n,r]=(0,_.useState)(0);if(e)return null;let i=()=>(0,$.jsxs)(`g`,{className:`ghost-hand`,children:[(0,$.jsx)(`circle`,{cx:`0`,cy:`0`,r:`15`,fill:`rgba(255, 249, 196, 0.2)`,stroke:`var(--angelic-gold)`,strokeWidth:`1`}),(0,$.jsx)(`path`,{d:`M -2,2 L 15,15`,stroke:`var(--angelic-gold)`,strokeWidth:`2`}),(0,$.jsx)(ZD,{size:20,x:`-10`,y:`-10`,color:`var(--angelic-gold)`,fill:`var(--angelic-gold)`})]}),a=[{title:`Planta una Semilla`,desc:`Arrastra desde el punto dorado hacia el vacío para crear vida.`,visual:(0,$.jsxs)(`svg`,{width:`160`,height:`100`,viewBox:`0 0 160 100`,children:[(0,$.jsx)(`rect`,{x:`10`,y:`30`,width:`50`,height:`40`,rx:`6`,fill:`rgba(255,255,255,0.05)`,stroke:`var(--cyan-ethereal)`}),(0,$.jsx)(`circle`,{cx:`60`,cy:`50`,r:`4`,fill:`var(--angelic-gold)`}),(0,$.jsx)(`path`,{d:`M 60 50 Q 90 50 120 40`,stroke:`var(--angelic-gold)`,strokeWidth:`2`,fill:`none`,strokeDasharray:`4`,className:`draw-path`}),(0,$.jsx)(`rect`,{x:`110`,y:`20`,width:`40`,height:`30`,rx:`4`,fill:`rgba(255,255,255,0.1)`,stroke:`var(--mint-tech)`,className:`appear-node`}),(0,$.jsx)(`g`,{className:`hand-drag-seed`,children:(0,$.jsx)(i,{})})]})},{title:`Fusiona Conocimiento`,desc:`Suelta una tarjeta sobre otra para desbloquear sinergias secretas.`,visual:(0,$.jsxs)(`svg`,{width:`160`,height:`100`,viewBox:`0 0 160 100`,children:[(0,$.jsx)(`rect`,{x:`100`,y:`30`,width:`50`,height:`40`,rx:`6`,fill:`rgba(255,255,255,0.05)`,stroke:`var(--angelic-gold)`}),(0,$.jsxs)(`g`,{className:`node-fusion-drag`,children:[(0,$.jsx)(`rect`,{x:`0`,y:`0`,width:`50`,height:`40`,rx:`6`,fill:`rgba(255,255,255,0.1)`,stroke:`var(--cyan-ethereal)`}),(0,$.jsx)(i,{})]}),(0,$.jsx)(`circle`,{cx:`125`,cy:`50`,r:`10`,fill:`var(--angelic-gold)`,className:`fusion-spark`})]})},{title:`Explora el Codex`,desc:`Toca un nodo para revelar su código y superar el desafío.`,visual:(0,$.jsxs)(`svg`,{width:`160`,height:`100`,viewBox:`0 0 160 100`,children:[(0,$.jsx)(`rect`,{x:`55`,y:`30`,width:`50`,height:`40`,rx:`6`,fill:`rgba(255,255,255,0.05)`,stroke:`var(--cyan-ethereal)`}),(0,$.jsx)(`g`,{className:`hand-tap`,children:(0,$.jsx)(i,{})}),(0,$.jsx)(`circle`,{cx:`80`,cy:`50`,r:`15`,fill:`none`,stroke:`var(--cyan-ethereal)`,className:`tap-ripple`})]})}];return(0,$.jsxs)(`div`,{style:{position:`fixed`,bottom:`40px`,left:`50%`,transform:`translateX(-50%)`,width:`320px`,background:`rgba(10, 10, 10, 0.98)`,backdropFilter:`blur(25px)`,border:`1px solid rgba(255, 249, 196, 0.4)`,borderRadius:`30px`,padding:`30px`,zIndex:9999,boxShadow:`0 0 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 249, 196, 0.1)`,animation:`slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)`},children:[(0,$.jsx)(`div`,{style:{background:`radial-gradient(circle, rgba(255,249,196,0.05) 0%, rgba(0,0,0,0) 70%)`,borderRadius:`20px`,padding:`10px`,marginBottom:`20px`,display:`flex`,justifyContent:`center`,height:`120px`,alignItems:`center`},children:a[n].visual}),(0,$.jsx)(`h3`,{style:{margin:`0 0 10px 0`,fontSize:`22px`,color:`var(--angelic-gold)`,textAlign:`center`,fontWeight:`800`,letterSpacing:`0.5px`},children:a[n].title}),(0,$.jsx)(`p`,{style:{margin:`0 0 30px 0`,fontSize:`15px`,color:`var(--text-secondary)`,lineHeight:`1.6`,textAlign:`center`},children:a[n].desc}),(0,$.jsxs)(`div`,{style:{display:`flex`,justifyContent:`space-between`,alignItems:`center`},children:[(0,$.jsx)(`div`,{style:{display:`flex`,gap:`8px`},children:a.map((e,t)=>(0,$.jsx)(`div`,{style:{width:t===n?`24px`:`8px`,height:`6px`,borderRadius:`3px`,background:t===n?`var(--angelic-gold)`:`rgba(255,255,255,0.1)`,transition:`all 0.4s`}},t))}),(0,$.jsx)(`button`,{onClick:()=>{n<a.length-1?r(n+1):t()},style:{background:`var(--angelic-gold)`,border:`none`,borderRadius:`15px`,padding:`12px 24px`,color:`#000`,fontWeight:`900`,fontSize:`14px`,cursor:`pointer`,boxShadow:`0 5px 20px rgba(255, 249, 196, 0.3)`,transition:`transform 0.2s`},onMouseDown:e=>e.currentTarget.style.transform=`scale(0.95)`,onMouseUp:e=>e.currentTarget.style.transform=`scale(1)`,children:n<a.length-1?`Siguiente`:`¡CULTIVAR!`})]}),(0,$.jsx)(`style`,{children:`
         @keyframes slideUp { from { transform: translate(-50%, 100px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
         
-        /* Animaciones del tutorial */
-        .draw-path { stroke-dashoffset: 100; stroke-dasharray: 100; animation: draw 2s infinite; }
-        @keyframes draw { to { stroke-dashoffset: 0; } }
-        
-        .hand-move { animation: hand 2s infinite; }
-        @keyframes hand { 
-          0% { transform: translate(0, 0); opacity: 0; }
+        .hand-drag-seed { animation: drag-seed 2.5s infinite; }
+        @keyframes drag-seed {
+          0% { transform: translate(60px, 50px); opacity: 0; }
           20% { opacity: 1; }
-          80% { transform: translate(50px, -20px); opacity: 1; }
-          100% { transform: translate(50px, -20px); opacity: 0; }
+          70% { transform: translate(120px, 40px); opacity: 1; }
+          90%, 100% { transform: translate(120px, 40px); opacity: 0; }
         }
 
-        .node-a-move { animation: node-move 2s infinite; }
-        @keyframes node-move {
-          0% { transform: translate(0, 0); }
-          70% { transform: translate(60px, 0); }
-          100% { transform: translate(60px, 0); }
+        .appear-node { animation: node-appear 2.5s infinite; }
+        @keyframes node-appear {
+          0%, 60% { opacity: 0; transform: scale(0.8); }
+          75% { opacity: 1; transform: scale(1.1); }
+          90%, 100% { opacity: 1; transform: scale(1); }
         }
 
-        .tap-animate { animation: tap 1.5s infinite; }
-        @keyframes tap {
-          0% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.5); opacity: 0; }
-          100% { transform: scale(1); opacity: 0; }
+        .node-fusion-drag { animation: fusion-drag 3s infinite; }
+        @keyframes fusion-drag {
+          0% { transform: translate(20px, 30px); opacity: 0; }
+          15% { opacity: 1; }
+          60% { transform: translate(100px, 30px); opacity: 1; }
+          70%, 100% { transform: translate(100px, 30px); opacity: 0; }
         }
+
+        .fusion-spark { animation: spark 3s infinite; }
+        @keyframes spark {
+          0%, 55% { transform: scale(0); opacity: 0; }
+          60% { transform: scale(2); opacity: 1; }
+          70%, 100% { transform: scale(0); opacity: 0; }
+        }
+
+        .hand-tap { animation: tap-move 2s infinite; }
+        @keyframes tap-move {
+          0% { transform: translate(80px, 80px); opacity: 0; }
+          30% { transform: translate(80px, 50px); opacity: 1; }
+          50% { transform: translate(80px, 50px) scale(0.8); opacity: 1; }
+          70% { transform: translate(80px, 50px); opacity: 1; }
+          100% { transform: translate(80px, 20px); opacity: 0; }
+        }
+
+        .tap-ripple { animation: ripple 2s infinite; }
+        @keyframes ripple {
+          0%, 40% { transform: scale(0); opacity: 0; }
+          50% { transform: scale(1); opacity: 0.5; }
+          70%, 100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .draw-path { stroke-dashoffset: 100; stroke-dasharray: 100; animation: draw-conn 2.5s infinite; }
+        @keyframes draw-conn { 0%, 20% { stroke-dashoffset: 100; } 70%, 100% { stroke-dashoffset: 0; } }
       `})]})},cz=`/mycellium/assets/hero-zYN06F-e.png`,lz=()=>{let{showAchievement:e,setAchievement:t}=nu();return(0,_.useEffect)(()=>{if(e?.show){let e=setTimeout(()=>{t(null)},5e3);return()=>clearTimeout(e)}},[e,t]),e?.show?(0,$.jsxs)(`div`,{className:`achievement-container`,children:[(0,$.jsx)(`div`,{className:`lunivexie-img-wrapper`,children:(0,$.jsx)(`img`,{src:cz,alt:`Lunivexie`,className:`lunivexie-img`})}),(0,$.jsxs)(`div`,{className:`achievement-text-content`,children:[(0,$.jsx)(`h3`,{className:`achievement-title`,children:e.title}),(0,$.jsx)(`p`,{className:`achievement-message`,children:e.message})]}),(0,$.jsx)(`style`,{children:`
         .achievement-container {
           position: fixed;
